@@ -1,3 +1,4 @@
+UPDATE creature_template SET spell1 = '31707', spell2 = '33395' where entry = '510';
 /* Не кастуют Hand of deceiver аоешные болты (Shadow bolt volley), по причине, что спелл требует ману, а у мобов в базе маны нету. */
 UPDATE creature_template SET minhealth = '144624' , maxhealth = '144624' , minmana = '165450' , maxmana = '165450', minlevel='72', maxlevel='72' WHERE entry = '25588' ;
 /*fix*/
