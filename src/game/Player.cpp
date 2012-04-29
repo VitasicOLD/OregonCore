@@ -12080,6 +12080,8 @@ void Player::ApplyEnchantment(Item *item,EnchantmentSlot slot,bool apply, bool a
 
     if (!ignore_condition && pEnchant->EnchantmentCondition && !EnchantmentFitsRequirements(pEnchant->EnchantmentCondition, -1))
         return;
+        // Apply only if item is not broken 
+    if (!item->IsBroken())
 
     for (int s=0; s<3; s++)
     {
