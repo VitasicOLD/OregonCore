@@ -1,5 +1,5 @@
 /* Не кастуют Hand of deceiver аоешные болты (Shadow bolt volley), по причине, что спелл требует ману, а у мобов в базе маны нету. */
-UPDATE world.creature_template SET minhealth = '144624' , maxhealth = '144624' , minmana = '165450' , maxmana = '165450', minlevel='72', maxlevel='72' WHERE entry = '25588' ;
+UPDATE creature_template SET minhealth = '144624' , maxhealth = '144624' , minmana = '165450' , maxmana = '165450', minlevel='72', maxlevel='72' WHERE entry = '25588' ;
 /*fix*/
 DELETE FROM gameobject WHERE guid = '222486';
 INSERT INTO gameobject VALUES (222486, 183384, 530, 1, 12809.4, -6909.44, 41.1161, 2.77223, 0, 0, 0.982995, 0.183632, 25, 0, 1);
