@@ -201,6 +201,8 @@ void WorldSession::HandleTaxiNextDestinationOpcode(WorldPacket& recv_data)
         return;
 
     TaxiNodesEntry const* curDestNode = sTaxiNodesStore.LookupEntry(curDest);
+    if(curDest == 96 && GetPlayer()->GetQuestStatus(9718) == QUEST_STATUS_INCOMPLETE) 
+      GetPlayer()->CompleteQuest(9718);
 
     // far teleport case
     if (curDestNode && curDestNode->map_id != GetPlayer()->GetMapId())
