@@ -107,7 +107,7 @@ int Master::Run()
     sLog.outString("                          /\\____/                ");
     sLog.outString("                          \\_/__/                 ");
     sLog.outString(" http://www.oregoncore.com                    \n ");
-    sLog.outString(" ** Developer: Vitasic ** ")
+    sLog.outString(" ** Developer: Vitasic ** ");
 
     // worldd PID file creation
     std::string pidfile = sConfig.GetStringDefault("PidFile", "");
