@@ -24,6 +24,7 @@
 #include "../scripts/Custom/sc_npc_teleport.h"
 //custom
 void AddSC_npc_teleport();
+void AddSC_npc_buff();
 
 //examples
 //void AddSC_custom_example();
@@ -400,6 +401,7 @@ void AddScripts()
 
 //Custom
 AddSC_npc_teleport();
+AddSC_npc_buff();
 QueryResult_AutoPtr result;
 LoadNpcTele(result);
 
