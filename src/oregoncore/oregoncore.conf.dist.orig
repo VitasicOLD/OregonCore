@@ -1920,10 +1920,6 @@ CharDelete.KeepDays = 30
 #        The amount of honor points the duel winner will get after a duel.
 #        Default: 0 - disable
 #
-#    GoldAfterDuel
-#        The base amount, in gold, to award the winner of a duel.
-#        Default: 0 - disable
-#
 #    AlwaysMaxWeaponSkill
 #        Players will automatically gain max weapon/defense skill when
 #         logging in, leveling up etc.
@@ -1998,7 +1994,6 @@ PlayerStart.AllSpells = 0
 PlayerStart.MapsExplored = 0
 MusicInBattleground = 0
 HonorPointsAfterDuel = 0
-GoldAfterDuel = 0
 AlwaysMaxWeaponSkill = 0
 PvPToken.Enable = 0
 PvPToken.MapAllowType = 4
