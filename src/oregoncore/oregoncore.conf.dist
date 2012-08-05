@@ -2017,6 +2017,15 @@ CharDelete.KeepDays = 30
 #       Default: 0 (Disabled)
 #                1 - Enabled
 #
+#   RenameNPC.Enable
+#       Enable the Rename NPC.
+#       Default: 1 - Enabled
+#                0 (Disabled)
+#
+#   RenameNPC.CostInGold
+#       Cost to rename character in gold.
+#       Default: 100
+#
 ###############################################################################
 
 GuildMasterNPC.BuyEnabled = 1
@@ -2043,6 +2052,8 @@ MinRecordUpdateTimeDiff = 100
 PlayerStart.String = ""
 DuelMod.Enable = 0
 DuelMod.Cooldowns = 0
+RenameNPC.Enable = 1
+RenameNPC.CostInGold = 100
 
 ###############################################################################
 # AUTO BROADCAST
