@@ -157,6 +157,9 @@ extern int main(int argc, char **argv)
     sLog.outString( "%s [realm-daemon]", _FULLVERSION);
     sLog.outString( "<Ctrl-C> to stop.\n" );
     sLog.outString("Using configuration file %s.", cfg_file);
+    sLog.outString(" Developer: Vitasic ");
+    sLog.outString(" Developer Skype: vitasic32 ");
+    sLog.outString(" https://github.com/Vitasic \n ");
 
     // Check the version of the configuration file
     uint32 confVersion = sConfig.GetIntDefault("ConfVersion", 0);

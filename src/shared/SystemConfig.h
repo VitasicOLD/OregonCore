@@ -26,7 +26,7 @@
 #include "revision.h"
 
 
-#define _PACKAGENAME "OregonCore "
+#define _PACKAGENAME "Core: OregonCore\nDeveloper: Vitasic\nDeveloper Skype: vitasic32\n"
 #define _CODENAME "VELOCITY"
 
 #if OREGON_ENDIAN == OREGON_BIGENDIAN
