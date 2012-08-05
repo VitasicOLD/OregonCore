@@ -26,6 +26,9 @@
 void AddSC_npc_teleport();
 void AddSC_npc_buff();
 
+//custom
+void AddSC_npc_guildmaster();
+
 //examples
 //void AddSC_custom_example();
 //void AddSC_custom_gossip_codebox();
