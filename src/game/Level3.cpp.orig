@@ -5632,6 +5632,9 @@ bool ChatHandler::HandleBanHelper(BanMode mode, const char *args)
     if (!*args)
         return false;
 
+    std::string announce;
+    std::string bansecname;
+
     char* cnameOrIP = strtok ((char*)args, " ");
     if (!cnameOrIP)
         return false;
@@ -5695,6 +5698,33 @@ bool ChatHandler::HandleBanHelper(BanMode mode, const char *args)
             }
             SetSentErrorMessage(true);
             return false;
+    }
+
+    if (sWorld.getConfig(CONFIG_SHOW_KICK_IN_WORLD) == 1)
+    {
+        if ( m_session->GetSecurity() == 1 )
+            bansecname = "GameMaster";
+        if ( m_session->GetSecurity() == 2 )
+            bansecname = "Moderator";
+        if ( m_session->GetSecurity() == 3 )
+            bansecname = "Administrator";
+        if ( m_session->GetSecurity() == 4 )
+            bansecname = "System";
+
+        if (mode == BAN_CHARACTER)
+            announce = "The character '";
+        else if (mode == BAN_IP)
+            announce = "The IP '";
+        else
+            announce = "Account '";
+        announce += nameOrIP.c_str();
+        announce += "' was banned for ";
+        announce += duration;
+        announce += " by the ";
+        announce += bansecname;
+        announce += ". The reason is: ";
+        announce += reason;
+        HandleAnnounceCommand(announce.c_str());
     }
 
     return true;
