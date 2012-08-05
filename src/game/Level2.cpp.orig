@@ -56,10 +56,6 @@ static uint32 ReputationRankStrIndex[MAX_REPUTATION_RANK] =
 //mute player for some times
 bool ChatHandler::HandleMuteCommand(const char* args)
 {
-
-    std::string announce;
-    std::string mutesecname;
-
     if (!*args)
         return false;
 
@@ -76,7 +72,7 @@ bool ChatHandler::HandleMuteCommand(const char* args)
     char *mutereason = strtok(NULL, "");
     std::string mutereasonstr;
     if (!mutereason)
-        mutereasonstr = "TOS Infraction";
+        mutereasonstr = "No reason.";
     else
         mutereasonstr = mutereason;
 
@@ -132,28 +128,6 @@ bool ChatHandler::HandleMuteCommand(const char* args)
         ChatHandler(chr).PSendSysMessage(LANG_YOUR_CHAT_DISABLED, notspeaktime, mutereasonstr.c_str());
 
     PSendSysMessage(LANG_YOU_DISABLE_CHAT, cname.c_str(), notspeaktime, mutereasonstr.c_str());
-
-    if (sWorld.getConfig(CONFIG_SHOW_KICK_IN_WORLD) == 1)
-    {
-        if ( m_session->GetSecurity() == 1 )
-            mutesecname = "GameMaster";
-        if ( m_session->GetSecurity() == 2 )
-            mutesecname = "Moderator";
-        if ( m_session->GetSecurity() == 3 )
-            mutesecname = "Administrator";
-        if ( m_session->GetSecurity() == 4 )
-            mutesecname = "System";
-
-        announce = "The character '";
-        announce += charname;
-        announce += "' was muted for ";
-        announce += timetonotspeak;
-        announce += " minutes by the ";
-        announce += mutesecname;
-        announce += ". The reason is: ";
-        announce += mutereason;
-        HandleAnnounceCommand(announce.c_str());
-    }
 
     return true;
 }
@@ -1873,14 +1847,10 @@ bool ChatHandler::HandleMorphCommand(const char* args)
 //kick player
 bool ChatHandler::HandleKickPlayerCommand(const char *args)
 {
-
-    std::string announce;
-    std::string kicksecname;
-
     const char* kickName = strtok((char*)args, " ");
     char* kickReason = strtok(NULL, "\n");
-    std::string reason = "TOS Infraction";
-    std::string kicker = "System";
+    std::string reason = "No Reason";
+    std::string kicker = "Console";
     if (kickReason)
         reason = kickReason;
     if (m_session)
@@ -1905,21 +1875,7 @@ bool ChatHandler::HandleKickPlayerCommand(const char *args)
 
         if (sWorld.getConfig(CONFIG_SHOW_KICK_IN_WORLD) == 1)
         {
-            if ( m_session->GetSecurity() == 1 )
-                kicksecname = "GameMaster";
-            if ( m_session->GetSecurity() == 2 )
-                kicksecname = "Moderator";
-            if ( m_session->GetSecurity() == 3 )
-                kicksecname = "Administrator";   
-            if ( m_session->GetSecurity() == 4 )
-                kicksecname = "System";
-
-            announce = "The character '";
-            announce += player->GetName();
-            announce += "' was kicked by the ";
-            announce += kicksecname;
-            announce += ".";
-            HandleAnnounceCommand(announce.c_str());
+            sWorld.SendWorldText(LANG_COMMAND_KICKMESSAGE, player->GetName(), kicker.c_str(), reason.c_str());
         }
         else
         {
@@ -1964,20 +1920,8 @@ bool ChatHandler::HandleKickPlayerCommand(const char *args)
         {
             if (sWorld.getConfig(CONFIG_SHOW_KICK_IN_WORLD) == 1)
             {
-                if ( m_session->GetSecurity() == 1 )
-                    kicksecname = "GameMaster";
-                if ( m_session->GetSecurity() == 2 )
-                    kicksecname = "Moderator";
-                if ( m_session->GetSecurity() == 3 )
-                    kicksecname = "Administrator";
-                if ( m_session->GetSecurity() == 4 )
-                    kicksecname = "System";
-                announce = "The character '";
-                announce += player->GetName();
-                announce += "' was kicked by the ";
-                announce += kicksecname;
-                announce += ".";            
-                HandleAnnounceCommand(announce.c_str());
+
+                sWorld.SendWorldText(LANG_COMMAND_KICKMESSAGE, name.c_str(), kicker.c_str(), reason.c_str());
             }
             else
             {
